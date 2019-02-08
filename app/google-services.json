@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1092734991535",
+    "firebase_url": "https://finny-8809d.firebaseio.com",
+    "project_id": "finny-8809d",
+    "storage_bucket": "finny-8809d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1092734991535:android:3c334f553b4d8367",
+        "android_client_info": {
+          "package_name": "tech.arinzedroid.finny"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1092734991535-rm4ga5cuale42mj498ctkspuso119lmh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "tech.arinzedroid.finny",
+            "certificate_hash": "5982d1ce9e6fbd590212628de1d6580b5ae935e2"
+          }
+        },
+        {
+          "client_id": "1092734991535-lbtlo1dd2sisdbu13o1bg890ni2svojd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBf11QJCMMZ-DhsA26MV1QUH9akhk_idmY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1092734991535-lbtlo1dd2sisdbu13o1bg890ni2svojd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

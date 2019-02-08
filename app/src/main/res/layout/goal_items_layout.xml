@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="5dp"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <TextView
+        tools:text="Goal Name 1"
+        android:maxLength="24"
+        android:id="@+id/item_name"
+        style="@style/CustomTextStyleBlack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        tools:text="₦ 30,000"
+        android:id="@+id/item_amt"
+        android:layout_below="@+id/item_name"
+        style="@style/CustomTextStyleOrange"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        tools:text="Deactivated"
+        android:id="@+id/item_status"
+        android:layout_below="@+id/item_amt"
+        style="@style/CustomTextStyleDim"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <ImageView
+        android:id="@+id/arrow"
+        android:layout_below="@+id/item_name"
+        app:srcCompat="@drawable/ic_right_arrow"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/expires_text"
+        style="@style/CustomTextStyleDim"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/item_date"
+        android:layout_alignLeft="@+id/item_date"
+        android:layout_alignBottom="@+id/item_name"
+        android:text="@string/expires" />
+
+    <TextView
+        android:id="@+id/item_date"
+        style="@style/CustomTextStyleDim"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/item_amt"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginEnd="40dp"
+        android:layout_marginRight="40dp"
+        tools:text="30/06/2020" />
+
+    <View
+        android:background="@color/orangeText"
+        android:layout_marginTop="5dp"
+        android:layout_below="@+id/item_status"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"/>
+    <FrameLayout
+        android:clickable="true"
+        android:focusable="true"
+        android:id="@+id/item_layout"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:foreground="?android:attr/selectableItemBackground">
+    </FrameLayout>
+
+</RelativeLayout>

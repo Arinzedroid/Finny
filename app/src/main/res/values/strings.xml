@@ -1,0 +1,126 @@
+<resources>
+    <string name="app_name">Finny</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <string name="no_goals">No goals available</string>
+    <string name="tab_text_1">Goals</string>
+    <string name="tab_text_2">Investments</string>
+    <string name="tab_text_3">Debts</string>
+    <string name="tab_text_4">Savings</string>
+    <string name="tab_text_5">Piggys</string>
+    <string name="tab_text_6">Revenues</string>
+    <string name="ok_text">OK</string>
+    <string name="goal_name">Set Goal Name</string>
+    <string name="hint_goal_name">Enter goal name…</string>
+    <string name="save">Save</string>
+    <string name="edit">Edit</string>
+    <string name="delete">Delete</string>
+    <string name="set_amount">Set amount</string>
+    <string name="select_type">Type</string>
+    <string name="select_source">Select Source</string>
+    <string name="priority">Priority</string>
+    <string name="recurrent">Recurrent</string>
+    <string name="set_occurrence">Set Occurrence</string>
+    <string name="set_expiration">Set Expiration Date</string>
+    <string name="activate">Activate</string>
+    <string name="day">Day</string>
+    <string name="month">Month</string>
+    <string name="time">Time</string>
+    <string name="am">AM</string>
+    <string name="trans">Transaction History</string>
+    <string name="hint_password">Password</string>
+    <string name="hint_username">Email</string>
+    <string name="login">Login</string>
+    <string name="create_acct">Create Account</string>
+    <string name="forgot_password">Forgot Password</string>
+    <string name="google_signin">Sign up with google</string>
+    <string name="or">Or</string>
+    <string name="goal_text">This goal is inactive by default. Complete its details to activate</string>
+    <string name="expires">Expires</string>
+    <string name="skip">Skip >>></string>
+    <string name="no_revenue">No revenue source available</string>
+    <string name="skip_msg">Skipping this page would allow you use this app but none of your data will be saved.
+        \n Do you still want to continue</string>
+
+    <string name="google_web_client_id">1092734991535-j807qt2946v3ds8msialf7ptsoen3usa.apps.googleusercontent.com</string>
+
+
+    <string-array name="items">
+        <item>Item 1</item>
+        <item>Item 2</item>
+        <item>Item 3</item>
+        <item>Item 4</item>
+        <item>Item 5</item>
+    </string-array>
+
+    <string-array name="type_array">
+        <item>Recurrent</item>
+        <item>One Time</item>
+    </string-array>
+
+    <string-array name="priority">
+        <item>Low</item>
+        <item>Medium</item>
+        <item>High</item>
+    </string-array>
+
+    <string-array name="occurrence_array">
+        <item>Daily</item>
+        <item>Weekly</item>
+        <item>Monthly</item>
+        <item>Yearly</item>
+    </string-array>
+
+    <string-array name="daily_array">
+        <item>Monday</item>
+        <item>Tuesday</item>
+        <item>Wednesday</item>
+        <item>Thursday</item>
+        <item>Friday</item>
+        <item>Saturday</item>
+        <item>Sunday</item>
+    </string-array>
+
+    <string-array name="monthly_array">
+        <item>January</item>
+        <item>February</item>
+        <item>March</item>
+        <item>April</item>
+        <item>May</item>
+        <item>June</item>
+        <item>July</item>
+        <item>August</item>
+        <item>September</item>
+        <item>October</item>
+        <item>November</item>
+        <item>December</item>
+    </string-array>
+
+    <string-array name="time_array">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+    </string-array>
+
+    <string-array name="am_array">
+        <item>AM</item>
+        <item>PM</item>
+    </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>

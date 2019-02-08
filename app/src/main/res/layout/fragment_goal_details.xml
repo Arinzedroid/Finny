@@ -1,0 +1,578 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
+    android:focusable="true"
+    android:clickable="true"
+    tools:context=".fragments.GoalDetailsFragment">
+
+    <RelativeLayout
+        android:padding="10dp"
+        android:id="@+id/layout1"
+        android:background="@color/colorPrimary"
+        android:layout_width="match_parent"
+        android:layout_height="116dp">
+        <TextView
+            android:id="@+id/goal_name_tv"
+            tools:text="Goal Name"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:layout_margin="10dp"
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <Button
+            android:text="@string/save"
+            android:id="@+id/save_btn"
+            android:textColor="@color/white"
+            android:background="@drawable/button_round_corner_stroke"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_alignParentBottom="true"/>
+        <!--<Button-->
+            <!--android:text="@string/edit"-->
+            <!--android:id="@+id/edit_btn"-->
+            <!--android:layout_centerHorizontal="true"-->
+            <!--android:textColor="@color/white"-->
+            <!--android:background="@drawable/button_round_corner_stroke"-->
+            <!--android:foreground="?android:attr/selectableItemBackground"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="35dp"-->
+            <!--android:layout_alignParentBottom="true"/>-->
+        <Button
+            android:text="@string/delete"
+            android:id="@+id/delete_btn"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:textColor="@color/white"
+            android:background="@drawable/button_round_corner_stroke"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_alignParentBottom="true"/>
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_below="@+id/layout1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:padding="10dp"
+            android:id="@+id/layout2"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/layout3"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="10dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+
+                    android:layout_height="wrap_content">
+                    <TextView
+                        style="@style/CustomTextStyle"
+                        android:id="@+id/amt_text"
+                        android:layout_marginBottom="5dp"
+                        android:text="@string/set_amount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <EditText
+                        android:id="@+id/amt_et"
+                        android:layout_below="@+id/amt_text"
+                        android:padding="5dp"
+                        android:inputType="numberDecimal"
+                        android:minHeight="35dp"
+                        android:background="@drawable/edit_text_drawable"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="30dp"
+                    android:layout_height="wrap_content"/>
+
+                <RelativeLayout
+                    android:visibility="gone"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_marginBottom="5dp"
+                        style="@style/CustomTextStyle"
+                        android:id="@+id/type_text"
+                        android:text="@string/select_type"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <RelativeLayout
+                        android:background="@drawable/spinner_layout_drawable"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        android:layout_below="@+id/type_text"
+                        android:layout_width="match_parent"
+                        android:minHeight="35dp"
+                        android:layout_height="wrap_content">
+
+                        <Spinner
+                            android:entries="@array/type_array"
+                            android:id="@+id/type_spinner"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_toLeftOf="@+id/img_2"
+                            android:layout_toStartOf="@+id/img_2"
+                            android:background="@android:color/transparent"
+                            android:gravity="center"
+                            android:minHeight="35dp"
+                            android:spinnerMode="dropdown">
+
+                        </Spinner>
+                        <ImageView
+                            android:id="@+id/img_2"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_margin="5dp"
+                            app:srcCompat="@drawable/ic_down_arrow"
+                            android:layout_width="10dp"
+                            android:layout_height="10dp" />
+                    </RelativeLayout>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_marginBottom="5dp"
+                style="@style/CustomTextStyle"
+                android:layout_below="@+id/layout3"
+                android:id="@+id/source_text"
+                android:text="@string/select_source"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <RelativeLayout
+                android:id="@+id/spinner_layout2"
+                android:background="@drawable/spinner_layout_drawable"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:layout_below="@+id/source_text"
+                android:layout_width="match_parent"
+                android:minHeight="45dp"
+                android:layout_height="wrap_content">
+
+                <Spinner
+                    android:id="@+id/source_spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toStartOf="@+id/img_3"
+                    android:layout_toLeftOf="@+id/img_3"
+                    android:background="@android:color/transparent"
+                    android:clipToPadding="false"
+                    android:gravity="center"
+                    android:minHeight="35dp"
+                    android:spinnerMode="dropdown">
+
+                </Spinner>
+                <ImageView
+                    android:id="@+id/img_3"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_margin="5dp"
+                    app:srcCompat="@drawable/ic_down_arrow"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/layout4"
+                android:layout_marginTop="15dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:orientation="horizontal"
+                android:layout_below="@+id/spinner_layout2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_gravity="center"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:text="@string/priority"
+                    style="@style/CustomTextStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <RelativeLayout
+                    android:id="@+id/spinner_layout3"
+                    android:background="@drawable/spinner_layout_drawable"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:layout_width="85dp"
+                    android:minHeight="35dp"
+                    android:layout_height="wrap_content">
+
+                    <Spinner
+                        android:id="@+id/priority_spinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toLeftOf="@+id/img_4"
+                        android:layout_toStartOf="@+id/img_4"
+                        android:background="@android:color/transparent"
+                        android:gravity="center"
+                        android:minHeight="35dp"
+                        android:entries="@array/priority"
+                        android:spinnerMode="dropdown">
+
+                    </Spinner>
+                    <ImageView
+                        android:id="@+id/img_4"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_margin="5dp"
+                        app:srcCompat="@drawable/ic_down_arrow"
+                        android:layout_width="10dp"
+                        android:layout_height="10dp" />
+                </RelativeLayout>
+            </LinearLayout>
+            <View
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="5dp"
+                android:id="@+id/view1"
+                android:background="@color/colorPrimary"
+                android:layout_below="@+id/layout4"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"/>
+            <TextView
+                android:layout_below="@id/view1"
+                android:id="@+id/recurrent_tv"
+                android:text="@string/recurrent"
+                style="@style/CustomTextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <Switch
+                android:padding="5dp"
+                android:layout_below="@+id/recurrent_tv"
+                android:id="@+id/recurrent_switch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_below="@id/recurrent_switch"
+                android:id="@+id/occurrence_text"
+                android:text="@string/set_occurrence"
+                style="@style/CustomTextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <RelativeLayout
+                android:id="@+id/spinner_layout4"
+                android:background="@drawable/spinner_layout_drawable"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:layout_width="290dp"
+                android:minHeight="35dp"
+                android:layout_below="@+id/occurrence_text"
+                android:layout_height="wrap_content">
+
+                <Spinner
+                    android:id="@+id/occurrence_spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@+id/img_5"
+                    android:layout_toStartOf="@+id/img_5"
+                    android:background="@android:color/transparent"
+                    android:gravity="center"
+                    android:minHeight="35dp"
+                    android:entries="@array/occurrence_array"
+                    android:spinnerMode="dropdown">
+
+                </Spinner>
+                <ImageView
+                    android:id="@+id/img_5"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_margin="5dp"
+                    app:srcCompat="@drawable/ic_down_arrow"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/spinner_layout4"
+                android:id="@+id/layout5"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <RelativeLayout
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:id="@+id/month_text"
+                        android:text="@string/month"
+                        style="@style/CustomTextStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <RelativeLayout
+                        android:id="@+id/spinner_layout5"
+                        android:background="@drawable/spinner_layout_drawable"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        android:layout_width="match_parent"
+                        android:minHeight="35dp"
+                        android:layout_below="@+id/month_text"
+                        android:layout_height="wrap_content">
+
+                        <Spinner
+                            android:id="@+id/month_spinner"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_toLeftOf="@+id/img_6"
+                            android:layout_toStartOf="@+id/img_6"
+                            android:background="@android:color/transparent"
+                            android:gravity="center"
+                            android:minHeight="35dp"
+                            android:entries="@array/monthly_array"
+                            android:spinnerMode="dropdown">
+
+                        </Spinner>
+                        <ImageView
+                            android:id="@+id/img_6"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_margin="5dp"
+                            app:srcCompat="@drawable/ic_down_arrow"
+                            android:layout_width="10dp"
+                            android:layout_height="10dp" />
+                    </RelativeLayout>
+
+
+                </RelativeLayout>
+                <View
+                    android:layout_width="10dp"
+                    android:layout_height="wrap_content"/>
+                <RelativeLayout
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:id="@+id/day_text"
+                        android:text="@string/day"
+                        style="@style/CustomTextStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <RelativeLayout
+                        android:id="@+id/spinner_layout6"
+                        android:background="@drawable/spinner_layout_drawable"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        android:layout_width="match_parent"
+                        android:minHeight="35dp"
+                        android:layout_below="@+id/day_text"
+                        android:layout_height="wrap_content">
+
+                        <Spinner
+                            android:id="@+id/day_spinner"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_toLeftOf="@+id/img_7"
+                            android:layout_toStartOf="@+id/img_7"
+                            android:background="@android:color/transparent"
+                            android:gravity="center"
+                            android:minHeight="35dp"
+                            android:entries="@array/daily_array"
+                            android:spinnerMode="dropdown">
+
+                        </Spinner>
+                        <ImageView
+                            android:id="@+id/img_7"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_margin="5dp"
+                            app:srcCompat="@drawable/ic_down_arrow"
+                            android:layout_width="10dp"
+                            android:layout_height="10dp" />
+                    </RelativeLayout>
+
+                </RelativeLayout>
+                <View
+                    android:layout_width="10dp"
+                    android:layout_height="wrap_content"/>
+                <RelativeLayout
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:id="@+id/time_text"
+                        android:text="@string/time"
+                        style="@style/CustomTextStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <RelativeLayout
+                        android:id="@+id/spinner_layout7"
+                        android:background="@drawable/spinner_layout_drawable"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        android:layout_width="match_parent"
+                        android:minHeight="35dp"
+                        android:layout_below="@+id/time_text"
+                        android:layout_height="wrap_content">
+
+                        <Spinner
+                            android:id="@+id/time_spinner"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_toLeftOf="@+id/img_8"
+                            android:layout_toStartOf="@+id/img_8"
+                            android:background="@android:color/transparent"
+                            android:gravity="center"
+                            android:minHeight="35dp"
+                            android:entries="@array/time_array"
+                            android:spinnerMode="dropdown">
+
+                        </Spinner>
+                        <ImageView
+                            android:id="@+id/img_8"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_margin="5dp"
+                            app:srcCompat="@drawable/ic_down_arrow"
+                            android:layout_width="10dp"
+                            android:layout_height="10dp" />
+                    </RelativeLayout>
+                </RelativeLayout>
+                <View
+                    android:layout_width="10dp"
+                    android:layout_height="wrap_content"/>
+                <RelativeLayout
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:id="@+id/am_text"
+                        android:text="@string/am"
+                        style="@style/CustomTextStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <RelativeLayout
+                        android:id="@+id/spinner_layout8"
+                        android:background="@drawable/spinner_layout_drawable"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        android:layout_width="match_parent"
+                        android:minHeight="35dp"
+                        android:layout_below="@+id/am_text"
+                        android:layout_height="wrap_content">
+
+                        <Spinner
+                            android:id="@+id/am_spinner"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_toLeftOf="@+id/img_9"
+                            android:layout_toStartOf="@+id/img_9"
+                            android:background="@android:color/transparent"
+                            android:gravity="center"
+                            android:minHeight="35dp"
+                            android:entries="@array/am_array"
+                            android:spinnerMode="dropdown">
+
+                        </Spinner>
+                        <ImageView
+                            android:id="@+id/img_9"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_margin="5dp"
+                            app:srcCompat="@drawable/ic_down_arrow"
+                            android:layout_width="10dp"
+                            android:layout_height="10dp" />
+                    </RelativeLayout>
+                </RelativeLayout>
+            </LinearLayout>
+
+            <View
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="5dp"
+                android:id="@+id/view2"
+                android:background="@color/colorPrimary"
+                android:layout_below="@+id/layout5"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"/>
+
+            <TextView
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_below="@id/view2"
+                android:id="@+id/expiration_text"
+                android:text="@string/set_expiration"
+                style="@style/CustomTextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <CalendarView
+                android:id="@+id/expiration_cal"
+                android:background="@drawable/spinner_layout_drawable"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:layout_width="190dp"
+                android:minHeight="35dp"
+                android:layout_below="@+id/expiration_text"
+                android:layout_height="wrap_content">
+
+            </CalendarView>
+
+            <TextView
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/view2"
+                android:id="@+id/activate_text"
+                android:text="@string/activate"
+                style="@style/CustomTextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <Switch
+                android:padding="5dp"
+                android:layout_alignStart="@+id/activate_text"
+                android:layout_alignLeft="@+id/activate_text"
+                android:layout_below="@+id/activate_text"
+                android:id="@+id/activate_switch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </RelativeLayout>
+    </ScrollView>
+
+
+</RelativeLayout>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:minWidth="230dp"
+    android:padding="20dp"
+    android:layout_height="wrap_content"
+    android:background="@drawable/round_dialog_drawable"
+    tools:context=".fragments.AddNewGoalFragment">
+
+    <TextView
+        android:id="@+id/text"
+        android:text="@string/goal_name"
+        style="@style/CustomTextStyleBlack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <EditText
+        android:id="@+id/goal_name_et"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="5dp"
+        android:minWidth="200dp"
+        android:padding="5dp"
+        android:hint="@string/hint_goal_name"
+        android:inputType="textCapWords"
+        android:minHeight="35dp"
+        android:maxLines="2"
+        android:maxLength="24"
+        android:layout_width="match_parent"
+        android:layout_below="@+id/text"
+        android:background="@drawable/edit_text_drawable"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:padding="5dp"
+        android:gravity="center"
+        android:textSize="12sp"
+        android:textColor="@color/dimText"
+        android:layout_below="@+id/goal_name_et"
+        android:id="@+id/goal_text"
+        android:text="@string/goal_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    
+    <Button
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/white"
+        android:text="@string/ok_text"
+        android:textSize="18sp"
+        android:id="@+id/ok_btn"
+        android:background="@drawable/button_round_corner"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/goal_text"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:foreground="?android:attr/selectableItemBackground"/>
+
+
+</RelativeLayout>
