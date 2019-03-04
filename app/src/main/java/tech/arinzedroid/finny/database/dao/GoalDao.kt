@@ -16,7 +16,7 @@ interface GoalDao {
     @Update(onConflict = OnConflictStrategy.IGNORE)
     fun updateGoal(goal:GoalsModel): Int
 
-    @Delete()
+    @Delete
     fun deleteGoal(goal: GoalsModel): Int
 
     @Query("SELECT * FROM GoalsModel")

@@ -16,6 +16,9 @@ interface RevenueDao {
     @Update(onConflict = OnConflictStrategy.IGNORE)
     fun updateRevenue(revenue: RevenueModel): Int
 
-    @Delete()
+    @Delete
     fun deleteRevenue(revenue: RevenueModel): Int
+
+    @Query("SELECT * FROM RevenueModel WHERE id = :id")
+    fun getRevenueById(id: String): RevenueModel
 }

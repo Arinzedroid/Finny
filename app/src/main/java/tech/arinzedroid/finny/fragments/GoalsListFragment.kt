@@ -17,7 +17,7 @@ import tech.arinzedroid.finny.utils.ShowUtils
 import tech.arinzedroid.finny.viewModels.AppViewModel
 
 
-class GoalsListFragment : Fragment(), OnItemClickInterface{
+class GoalsListFragment : Fragment(), OnItemClickInterface {
 
     private lateinit var goalsList :List<GoalsModel>
     private var appViewModel :AppViewModel? = null
@@ -43,23 +43,28 @@ class GoalsListFragment : Fragment(), OnItemClickInterface{
             it?.let { it1 -> displayGoals(ArrayList(it1)) }
         })
 
-        appViewModel?.getGoalUpdate()?.observe(this, Observer {
-            adapter.updateAdapter(it?.goalsModel,it?.positon)
-        })
+//        appViewModel?.getGoalUpdate()?.observe(this, Observer {
+//            adapter.updateAdapter(it?.goalsModel,it?.positon)
+//        })
 
         return view
     }
 
     private fun displayGoals(goals: ArrayList<GoalsModel>){
         goalsList = goals
-        adapter = GoalsAdapter(goals,this)
+        adapter = GoalsAdapter(requireContext(),goals,this)
         recycler_view.adapter = adapter
-        no_goals_tv.visibility = View.GONE
+        if(goals.size == 0){
+            no_goals_tv.visibility = View.VISIBLE
+        }else{
+            no_goals_tv.visibility = View.GONE
+        }
+
     }
 
     companion object {
         @JvmStatic
-        fun newInstance(param1: String, param2: String) = GoalsListFragment()
+        fun newInstance() = GoalsListFragment()
 
     }
 }

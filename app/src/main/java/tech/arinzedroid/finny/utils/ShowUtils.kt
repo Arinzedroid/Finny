@@ -2,7 +2,6 @@ package tech.arinzedroid.finny.utils
 
 import android.app.AlertDialog
 import android.content.Context
-import android.content.DialogInterface
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentActivity
 import tech.arinzedroid.finny.interfaces.OnDialogButtonClicked

@@ -79,7 +79,6 @@
                 android:layout_height="wrap_content">
                 <RelativeLayout
                     android:layout_width="match_parent"
-
                     android:layout_height="wrap_content">
                     <TextView
                         style="@style/CustomTextStyle"
@@ -196,13 +195,32 @@
                     android:layout_height="15dp" />
             </RelativeLayout>
 
+            <TextView
+                android:layout_marginTop="10dp"
+                style="@style/CustomTextStyle"
+                android:id="@+id/debit_amt_text"
+                android:layout_marginBottom="5dp"
+                android:layout_below="@+id/spinner_layout2"
+                android:text="Set debit amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <EditText
+                android:id="@+id/debit_amt_et"
+                android:layout_below="@+id/debit_amt_text"
+                android:padding="5dp"
+                android:inputType="numberDecimal"
+                android:minHeight="35dp"
+                android:background="@drawable/edit_text_drawable"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
             <LinearLayout
                 android:id="@+id/layout4"
                 android:layout_marginTop="15dp"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true"
                 android:orientation="horizontal"
-                android:layout_below="@+id/spinner_layout2"
+                android:layout_below="@+id/debit_amt_et"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
                 <TextView
@@ -312,6 +330,7 @@
             </RelativeLayout>
 
             <LinearLayout
+                android:visibility="gone"
                 android:layout_marginTop="10dp"
                 android:layout_below="@+id/spinner_layout4"
                 android:id="@+id/layout5"
@@ -423,6 +442,7 @@
                     android:layout_width="10dp"
                     android:layout_height="wrap_content"/>
                 <RelativeLayout
+                    android:visibility="gone"
                     android:layout_weight="1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content">
@@ -473,6 +493,7 @@
                     android:layout_width="10dp"
                     android:layout_height="wrap_content"/>
                 <RelativeLayout
+                    android:visibility="gone"
                     android:layout_weight="1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content">
@@ -540,7 +561,21 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
+            <Button
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:text="Expiry"
+                android:id="@+id/expiry_button"
+                android:textAllCaps="false"
+                android:background="@drawable/button_states"
+                android:textColor="@color/white"
+                android:elevation="20dp"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:layout_below="@+id/expiration_text"
+                />
+
             <CalendarView
+                android:visibility="gone"
                 android:id="@+id/expiration_cal"
                 android:background="@drawable/spinner_layout_drawable"
                 android:foreground="?android:attr/selectableItemBackground"

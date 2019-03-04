@@ -4,7 +4,8 @@ class CurrencyFormatter {
 
     companion object {
         fun addSymbol(currency: Double):String{
-            return "₦ " + currency.toString()
+            val moneyString  = String.format("%,.2f",currency)
+            return "₦ $moneyString"
         }
     }
 }

@@ -9,18 +9,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
-import kotlinx.android.synthetic.main.fragment_add_new_item.view.*
 import org.parceler.Parcels
 
 import tech.arinzedroid.finny.R
 import tech.arinzedroid.finny.dataModels.RevenueModel
 
 private const val REVENUE: String = "REVENUE"
+private const val POSITION = "POSITION"
 
 class AddRevenueFragment : DialogFragment() {
 
     private var listener: OnFragmentInteractionListener? = null
     private var revenueModel: RevenueModel? = null
+    private var position: Int = 0
     private lateinit var nameET: EditText
     private lateinit var amtET: EditText
     private lateinit var dateSp: Spinner
@@ -42,6 +43,7 @@ class AddRevenueFragment : DialogFragment() {
         super.onCreate(savedInstanceState)
         arguments?.let{
             revenueModel = Parcels.unwrap(it.getParcelable(REVENUE))
+            position = Parcels.unwrap(it.getParcelable(POSITION))
         }
     }
 
@@ -58,12 +60,26 @@ class AddRevenueFragment : DialogFragment() {
         deleteBtn = view.findViewById(R.id.delete_btn)
         saveBtn = view.findViewById(R.id.save_btn)
 
+        if(revenueModel == null){
+            deleteBtn.isEnabled = false
+        }
+
+        nameET.setText(revenueModel?.name)
+        amtET.setText(revenueModel?.amt?.toString())
+        revenueModel?.automate?.let {
+            automateSw.isChecked = it
+        }
+        revenueModel?.activate?.let {
+            activateSw.isChecked = it
+        }
+
+
         val list = ArrayList<Int>()
         for (i in 1..31){
             list.add(i)
         }
 
-        val adapter = ArrayAdapter<Int>(context,R.layout.spinner_items_layout,list)
+        val adapter = ArrayAdapter<Int>(context,android.R.layout.simple_spinner_item,list)
         adapter.setDropDownViewResource(R.layout.spinner_dropdown_layout)
         dateSp.adapter = adapter
 
@@ -72,7 +88,7 @@ class AddRevenueFragment : DialogFragment() {
         }
 
         deleteBtn.setOnClickListener {
-            listener?.onDeleteClicked(revenueModel)
+            listener?.onDeleteRevenue(revenueModel,position)
             this.dismiss()
         }
 
@@ -89,16 +105,27 @@ class AddRevenueFragment : DialogFragment() {
             return
         }
 
-        val revenueModel = RevenueModel()
-        revenueModel.name = nameET.text.toString()
-        revenueModel.amt = amtET.text.toString().toDouble()
-        revenueModel.dueDate = dateSp.selectedItem.toString().toInt()
-        revenueModel.automate = automateSw.isChecked
-        revenueModel.activate = activateSw.isChecked
-
         this.dismiss()
 
-        listener?.onSaveClicked(revenueModel)
+        if(this.revenueModel == null){
+            val revenueModel = RevenueModel()
+            revenueModel.name = nameET.text.toString()
+            //revenueModel.amt = amtET.text.toString().toDouble()
+            revenueModel.recurrentAmt = amtET.text.toString().toDouble()
+            revenueModel.dueDate = dateSp.selectedItem.toString().toInt()
+            revenueModel.automate = automateSw.isChecked
+            revenueModel.activate = activateSw.isChecked
+            listener?.onCreateRevenue(revenueModel)
+        }else{
+            this.revenueModel?.let {
+                it.name = nameET.text.toString()
+                it.amt = amtET.text.toString().toDouble()
+                it.dueDate = dateSp.selectedItem.toString().toInt()
+                it.activate = activateSw.isChecked
+                it.automate = automateSw.isChecked
+                listener?.onUpdateRevenue(it,position)
+            }
+        }
     }
 
 
@@ -107,7 +134,7 @@ class AddRevenueFragment : DialogFragment() {
         if (context is OnFragmentInteractionListener) {
             listener = context
         } else {
-            throw RuntimeException(context.toString() + " must implement OnFragmentInteractionListener")
+            throw RuntimeException("$context must implement OnFragmentInteractionListener")
         }
     }
 
@@ -118,17 +145,21 @@ class AddRevenueFragment : DialogFragment() {
 
 
     interface OnFragmentInteractionListener {
-       fun onSaveClicked(revenue: RevenueModel)
-        fun onDeleteClicked(revenue: RevenueModel?)
+        fun onUpdateRevenue(revenue: RevenueModel, position: Int)
+        fun onDeleteRevenue(revenue: RevenueModel?, position: Int)
+        fun onCreateRevenue(revenue: RevenueModel)
     }
 
     companion object {
         @JvmStatic
-        fun newInstance(revenue: RevenueModel?) =
+        fun newInstance(revenue: RevenueModel?, position: Int) =
                 AddRevenueFragment().apply {
                     arguments = Bundle().apply {
                         putParcelable(REVENUE, Parcels.wrap(revenue))
+                        putParcelable(POSITION,Parcels.wrap(position))
                     }
                 }
+
+        fun newInstance() = AddRevenueFragment()
     }
 }

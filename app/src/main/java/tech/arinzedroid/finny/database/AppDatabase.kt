@@ -4,16 +4,20 @@ import android.arch.persistence.room.Database
 import android.arch.persistence.room.Room
 import android.arch.persistence.room.RoomDatabase
 import android.content.Context
-import tech.arinzedroid.finny.dataModels.GoalsModel
-import tech.arinzedroid.finny.dataModels.RevenueModel
-import tech.arinzedroid.finny.database.dao.GoalDao
-import tech.arinzedroid.finny.database.dao.RevenueDao
+import tech.arinzedroid.finny.dataModels.*
+import tech.arinzedroid.finny.database.dao.*
 
-@Database(entities = [GoalsModel::class,RevenueModel::class],version = 1)
+@Database(entities = [GoalsModel::class,RevenueModel::class, ExpenseModel::class, WorkModel::class,
+    SavingsModel::class,TasksData::class],version = 1)
+
 abstract class AppDatabase: RoomDatabase() {
 
     abstract fun goalDao(): GoalDao
     abstract fun revenueDao(): RevenueDao
+    abstract fun expenseDao(): ExpenseDao
+    abstract fun workDao(): WorkDao
+    abstract fun savingsDao(): SavingsDao
+    abstract fun tasksDao():TaskDao
 
     companion object {
         private var Instance: AppDatabase? = null

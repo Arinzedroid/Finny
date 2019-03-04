@@ -6,10 +6,7 @@ import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
-import tech.arinzedroid.finny.dataModels.GoalsModel
-import tech.arinzedroid.finny.dataModels.RevenueModel
-import tech.arinzedroid.finny.dataModels.UpdatedGoal
-import tech.arinzedroid.finny.dataModels.UpdatedRevenue
+import tech.arinzedroid.finny.dataModels.*
 import tech.arinzedroid.finny.database.AppDatabase
 import tech.arinzedroid.finny.repo.AppRepo
 
@@ -20,32 +17,30 @@ class AppViewModel(application: Application) : AndroidViewModel(application){
 
     private var goalMutableList : LiveData<List<GoalsModel>>? = null
     private var revenueMutableList: LiveData<List<RevenueModel>>? = null
-    private val updatedGoalLiveData: MutableLiveData<UpdatedGoal> = MutableLiveData()
-    private val updatedRevenueLiveData: MutableLiveData<UpdatedRevenue> = MutableLiveData()
-
+    private var expenseMutableList: LiveData<List<ExpenseModel>>? = null
+    private var savingsMutableList: LiveData<List<SavingsModel>>? = null
 
     init {
         if(goalMutableList == null){
-            getGoalsDB()
+          getGoalsDB()
         }
         if(revenueMutableList == null){
             getRevenueDB()
         }
+        if(expenseMutableList == null){
+            getAllExpenseDB()
+        }
+        if(savingsMutableList == null){
+            getAllSavingsDB()
+        }
+
     }
 
     fun addGoal(goal: GoalsModel){
        addGoalDB(goal)
     }
 
-    fun addGoals(goalsList: ArrayList<GoalsModel>){
-        //goalMutableList.postValue(goalsList)
-    }
-
-    fun updateGoal(goal: GoalsModel, position: Int){
-        val update = UpdatedGoal()
-        update.goalsModel = goal
-        update.positon = position
-        updatedGoalLiveData.postValue(update)
+    fun updateGoal(goal: GoalsModel){
         updateGoalDB(goal)
     }
 
@@ -61,34 +56,48 @@ class AppViewModel(application: Application) : AndroidViewModel(application){
         deleteRevenueDB(revenueModel)
     }
 
-    fun updateRevenue(revenueModel: RevenueModel, position: Int){
-        val updatedRevenue = UpdatedRevenue()
-        updatedRevenue.revenue = revenueModel
-        updatedRevenue.position = position
-        updatedRevenueLiveData.postValue(updatedRevenue)
+    fun updateRevenue(revenueModel: RevenueModel){
         updateRevenueDB(revenueModel)
     }
 
+    fun addExpense(expense: ExpenseModel){
+        addExpenseDB(expense)
+    }
 
+    fun deleteExpense(expense: ExpenseModel){
+        deleteExpenseDB(expense)
+    }
 
+    fun updateExpense(expense: ExpenseModel){
+        updateExpenseDB(expense)
+    }
 
-    fun getGoalUpdate(): LiveData<UpdatedGoal> = updatedGoalLiveData
+    fun addSavings(savingsModel: SavingsModel){
+        addSavingsDB(savingsModel)
+    }
+
+    fun deleteSavings(savingsModel: SavingsModel){
+        deleteSavingsDB(savingsModel)
+    }
+
+    fun updateSavings(savingsModel: SavingsModel){
+        updateSavingsDB(savingsModel)
+    }
+
 
     fun getGoals() : LiveData<List<GoalsModel>>? = goalMutableList
 
-    fun getRevenueUpdate(): LiveData<UpdatedRevenue> = updatedRevenueLiveData
-
     fun getRevenue(): LiveData<List<RevenueModel>>? = revenueMutableList
 
+    fun getExpense() : LiveData<List<ExpenseModel>>? = expenseMutableList
 
-
-
+    fun getSavings() : LiveData<List<SavingsModel>>? = savingsMutableList
 
     private fun getGoalsDB() = doAsync {
-        val data = appDatabase?.goalDao()?.getAllGoals()
-        uiThread {
-            goalMutableList = data
-        }
+            val data = appDatabase?.goalDao()?.getAllGoals()
+            uiThread {
+                goalMutableList = data
+            }
     }
 
     private fun updateGoalDB(goal: GoalsModel){
@@ -125,6 +134,50 @@ class AppViewModel(application: Application) : AndroidViewModel(application){
 
     private fun deleteRevenueDB(revenueModel: RevenueModel){
         doAsync { appDatabase?.revenueDao()?.deleteRevenue(revenueModel) }
+    }
+
+    private fun addExpenseDB(expense: ExpenseModel){
+        doAsync { appDatabase?.expenseDao()?.addExpense(expense)}
+    }
+
+    private fun updateExpenseDB(expense: ExpenseModel){
+        doAsync { appDatabase?.expenseDao()?.updateExpense(expense) }
+    }
+
+    private fun deleteExpenseDB(expense: ExpenseModel){
+        doAsync { appDatabase?.expenseDao()?.deleteExpense(expense) }
+    }
+
+    private fun getAllExpenseDB(){
+        doAsync { val data = appDatabase?.expenseDao()?.getAllExpense()
+            uiThread { expenseMutableList =  data}
+        }
+    }
+
+    private fun getAllSavingsDB(){
+        doAsync {
+            val data = appDatabase?.savingsDao()?.getAllSavings()
+            uiThread {
+                savingsMutableList = data
+            }
+        }
+    }
+
+    private fun addSavingsDB(savingsModel: SavingsModel){
+        doAsync {
+            appDatabase?.savingsDao()?.addSavings(savingsModel)
+        }
+    }
+
+    private fun updateSavingsDB(savingsModel: SavingsModel){
+        doAsync { appDatabase?.savingsDao()?.updateSavings(savingsModel)
+        }
+    }
+
+    private fun deleteSavingsDB(savingsModel: SavingsModel){
+        doAsync {
+            appDatabase?.savingsDao()?.deleteSavings(savingsModel)
+        }
     }
 }
 

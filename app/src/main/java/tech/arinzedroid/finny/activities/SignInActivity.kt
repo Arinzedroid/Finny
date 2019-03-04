@@ -37,9 +37,9 @@ class SignInActivity : AppCompatActivity() {
         view = findViewById(R.id.login_btn)
         auth = FirebaseAuth.getInstance()
         prefutils = PrefUtils(this)
-
+                //.requestIdToken(getString(R.string.default_web_client_id))
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(getString(R.string.default_web_client_id))
+
                 .requestEmail()
                 .build()
          googleClient = GoogleSignIn.getClient(this,gso)
@@ -94,7 +94,7 @@ class SignInActivity : AppCompatActivity() {
 
     private fun skip(){
         ShowUtils.showDialog(this, resources.getString(R.string.skip_msg),
-                "Skip",object : OnDialogButtonClicked{
+                "Skip",object : OnDialogButtonClicked {
             override fun onYesClicked() {
                 prefutils.anonLogIn(true)
                 startActivity(Intent(this@SignInActivity,HomeActivity::class.java))

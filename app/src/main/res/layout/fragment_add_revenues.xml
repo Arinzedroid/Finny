@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
-    android:minWidth="300dp"
+    android:padding="10dp"
+    android:minWidth="280dp"
     android:background="@drawable/round_dialog_drawable"
     tools:context=".fragments.AddRevenueFragment">
 
@@ -41,7 +41,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
-        android:text="Amount"
+        android:text="Amount Due"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/name_et" />
 
@@ -143,7 +143,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Automate"
+        android:text="Automatic"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/automate_sw" />
 
@@ -174,7 +174,7 @@
         android:id="@+id/delete_btn"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/button_round_corner"
+        android:background="@drawable/button_states"
         android:text="Delete"
         android:textAllCaps="false"
         android:textColor="@color/white"

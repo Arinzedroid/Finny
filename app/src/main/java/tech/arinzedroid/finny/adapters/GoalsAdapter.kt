@@ -1,7 +1,9 @@
 package tech.arinzedroid.finny.adapters
 
+import android.content.Context
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import tech.arinzedroid.finny.R
 import tech.arinzedroid.finny.dataModels.GoalsModel
@@ -10,7 +12,7 @@ import tech.arinzedroid.finny.utils.CurrencyFormatter
 import tech.arinzedroid.finny.utils.DateFormatter
 import tech.arinzedroid.finny.viewHolders.GoalItemsViewHolder
 
-class GoalsAdapter (private val goalsList: ArrayList<GoalsModel>, private val mListener: OnItemClickInterface):
+class GoalsAdapter (private val context: Context, private val goalsList: ArrayList<GoalsModel>, private val mListener: OnItemClickInterface):
         RecyclerView.Adapter<GoalItemsViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GoalItemsViewHolder {
@@ -32,11 +34,20 @@ class GoalsAdapter (private val goalsList: ArrayList<GoalsModel>, private val mL
     override fun onBindViewHolder(holder: GoalItemsViewHolder, position: Int) {
        val goal : GoalsModel = goalsList[position]
         holder.nameView?.text = goal.goalName
-        holder.amtView?.text = CurrencyFormatter.addSymbol(goal.amt)
+        holder.totalAmtView?.text = CurrencyFormatter.addSymbol(goal.totalAmt)
+        holder.amtView?.text = CurrencyFormatter.addSymbol(goal.currAmt)
         holder.dateView?.text = DateFormatter.formatDate(goal.expires)
+        if(goal.currAmt >= goal.totalAmt){
+            holder.clockView?.visibility = View.INVISIBLE
+            holder.amtView?.setTextColor(context.resources.getColor(R.color.orangeText))
+        }
         when(goal.status){
-            true -> holder.statusView?.text = "Activated"
-            else -> holder.statusView?.text = "Deactivated"
+            true -> holder.activatedView?.setImageDrawable(context.resources?.getDrawable(R.drawable.ic_activated))
+            else -> holder.activatedView?.setImageDrawable(context.resources?.getDrawable(R.drawable.ic_deactivated))
+        }
+        when(goal.recurrent){
+            true -> holder.recurrentView?.setImageDrawable(context.resources?.getDrawable(R.drawable.ic_loop))
+            else -> holder.recurrentView?.setImageDrawable(context.resources?.getDrawable(R.drawable.ic_no_loop))
         }
     }
 }

@@ -33,7 +33,7 @@
         <item name="android:textSize">12sp</item>
     </style>
 
-    <style name="AppTheme.SplashTheme" parent="Theme.AppCompat.NoActionBar">
+    <style name="AppTheme.SplashTheme" parent="AppTheme.NoActionBar">
         <item name="android:windowBackground">@drawable/splash_background</item>
     </style>
 

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="4dp"
+    app:cardElevation="5dp"
+    app:cardUseCompatPadding="true">
+
+    <RelativeLayout
+        android:padding="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/layout1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                tools:text="Savings Title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/CustomTextStyleBlack"
+                android:maxLength="24"
+                android:id="@+id/item_name"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
+            <TextView
+                android:id="@+id/item_total_amt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="N 30,000"
+                android:textSize="23sp"
+                android:textColor="@color/orangeText"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/item_name"/>
+            <TextView
+                android:id="@+id/date_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="22/02/2019"
+                app:layout_constraintTop_toBottomOf="@+id/item_total_amt"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+        </android.support.constraint.ConstraintLayout>
+        <FrameLayout
+            android:clickable="true"
+            android:focusable="true"
+            android:id="@+id/mock_layout"
+            android:layout_width="match_parent"
+            android:layout_height="75dp"
+            android:foreground="?android:attr/selectableItemBackground"/>
+        <ImageButton
+            android:id="@+id/sub_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_remove"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="5dp"
+            android:background="@android:color/transparent"
+            android:layout_toLeftOf="@+id/add_btn"
+            android:layout_toStartOf="@+id/add_btn"
+            android:layout_alignBottom="@+id/layout1"
+            android:foreground="?android:attr/selectableItemBackground"
+            />
+
+        <ImageButton
+            app:srcCompat="@drawable/ic_baseline_add"
+            android:id="@+id/add_btn"
+            android:background="@android:color/transparent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignBottom="@+id/layout1"
+            android:foreground="?android:attr/selectableItemBackground"/>
+    </RelativeLayout>
+
+
+
+</android.support.v7.widget.CardView>

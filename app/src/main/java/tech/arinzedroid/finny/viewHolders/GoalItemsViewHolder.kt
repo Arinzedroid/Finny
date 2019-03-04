@@ -12,6 +12,10 @@ class GoalItemsViewHolder(itemView: View?, listener: OnItemClickInterface) :
     val amtView = itemView?.item_amt
     val statusView = itemView?.item_status
     val dateView = itemView?.item_date
+    val clockView = itemView?.clock
+    val totalAmtView = itemView?.item_total_amt
+    val activatedView = itemView?.activated
+    val recurrentView = itemView?.loop
     val itemLayout = itemView?.item_layout?.setOnClickListener(this)
     private val mListener = listener
 

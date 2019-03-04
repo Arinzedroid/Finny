@@ -8,7 +8,7 @@ import android.support.v4.app.NotificationCompat
 import android.support.v4.app.NotificationManagerCompat
 import tech.arinzedroid.finny.R
 
-class Ntification(private val context: Context) {
+class Notification(private val context: Context) {
 
     private val chanelId = "channelID"; private val notifyId = 21
 
@@ -16,8 +16,8 @@ class Ntification(private val context: Context) {
         // Create the NotificationChannel, but only on API 26+ because
         // the NotificationChannel class is new and not in the support library
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val name = "dummy channel"
-            val descriptionText = "dummy description"
+            val name = "Finny Channel"
+            val descriptionText = "This channel is used to send notifications on finny app"
             val importance = NotificationManager.IMPORTANCE_HIGH
             val channel = NotificationChannel(chanelId, name, importance).apply {
                 description = descriptionText
@@ -26,18 +26,20 @@ class Ntification(private val context: Context) {
             val notificationManager: NotificationManager =
                     context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
             notificationManager.createNotificationChannel(channel)
+        }else{
+
         }
     }
 
-    fun createNotification(){
+    fun createNotification(title: String,text: String){
         createNotificationChannel()
 
         val mBuilder = NotificationCompat.Builder(context, chanelId)
-                .setSmallIcon(R.mipmap.ic_launcher)
-                .setContentTitle("My notification")
-                .setContentText("Much longer text that cannot fit one line...")
+                .setSmallIcon(R.mipmap.finny_icon)
+                .setContentTitle(title)
+                .setContentText(text)
                 .setStyle(NotificationCompat.BigTextStyle()
-                        .bigText("Much longer text that cannot fit one line..."))
+                        .bigText(text))
                 .setPriority(NotificationCompat.PRIORITY_HIGH)
 
         with(NotificationManagerCompat.from(context)){

@@ -1,76 +1,132 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:padding="5dp"
-    xmlns:tools="http://schemas.android.com/tools">
-
-    <TextView
-        tools:text="Goal Name 1"
-        android:maxLength="24"
-        android:id="@+id/item_name"
-        style="@style/CustomTextStyleBlack"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-    <TextView
-        tools:text="₦ 30,000"
-        android:id="@+id/item_amt"
-        android:layout_below="@+id/item_name"
-        style="@style/CustomTextStyleOrange"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-    <TextView
-        tools:text="Deactivated"
-        android:id="@+id/item_status"
-        android:layout_below="@+id/item_amt"
-        style="@style/CustomTextStyleDim"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-    <ImageView
-        android:id="@+id/arrow"
-        android:layout_below="@+id/item_name"
-        app:srcCompat="@drawable/ic_right_arrow"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-    <TextView
-        android:id="@+id/expires_text"
-        style="@style/CustomTextStyleDim"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/item_date"
-        android:layout_alignLeft="@+id/item_date"
-        android:layout_alignBottom="@+id/item_name"
-        android:text="@string/expires" />
-
-    <TextView
-        android:id="@+id/item_date"
-        style="@style/CustomTextStyleDim"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/item_amt"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginEnd="40dp"
-        android:layout_marginRight="40dp"
-        tools:text="30/06/2020" />
-
-    <View
-        android:background="@color/orangeText"
-        android:layout_marginTop="5dp"
-        android:layout_below="@+id/item_status"
+    app:cardCornerRadius="4dp"
+    app:cardElevation="5dp"
+    app:cardUseCompatPadding="true">
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="0.5dp"/>
-    <FrameLayout
-        android:clickable="true"
-        android:focusable="true"
-        android:id="@+id/item_layout"
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:foreground="?android:attr/selectableItemBackground">
-    </FrameLayout>
+        android:layout_height="wrap_content"
+        android:paddingStart="9dp"
+        android:paddingBottom="9dp"
+        android:paddingEnd="9dp">
 
-</RelativeLayout>
+        <TextView
+            android:id="@+id/item_name"
+            style="@style/CustomTextStyleBlack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLength="24"
+            tools:text="Goal Name 1" />
+
+        <TextView
+            android:layout_below="@+id/item_name"
+            android:id="@+id/item_total_amt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            tools:text="₦ 30,000" />
+
+        <ImageView
+            android:layout_marginTop="3dp"
+            android:id="@+id/clock"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp"
+            android:layout_below="@+id/item_total_amt"
+            app:srcCompat="@drawable/ic_clock"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/item_amt"
+            style="@style/CustomTextStyleOrange"
+            android:textColor="@color/green"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/item_total_amt"
+            android:layout_toEndOf="@+id/clock"
+            android:layout_toRightOf="@+id/clock"
+            tools:text="₦ 30,000" />
+
+        <TextView
+            android:visibility="gone"
+            android:id="@+id/item_status"
+            style="@style/CustomTextStyleDim"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/item_amt"
+            tools:text="Deactivated" />
+
+        <ImageView
+            android:layout_marginTop="10dp"
+            android:id="@+id/activated"
+            app:srcCompat="@drawable/ic_activated"
+            android:layout_below="@+id/item_amt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <ImageView
+            android:layout_marginTop="10dp"
+            android:id="@+id/loop"
+            app:srcCompat="@drawable/ic_loop"
+            android:layout_below="@+id/item_amt"
+            android:layout_toRightOf="@+id/activated"
+            android:layout_toEndOf="@+id/activated"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <ImageView
+            android:id="@+id/arrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/item_name"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            app:srcCompat="@drawable/ic_right_arrow" />
+
+        <TextView
+            android:id="@+id/expires_text"
+            style="@style/CustomTextStyleDim"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/item_date"
+            android:layout_alignLeft="@+id/item_date"
+            android:layout_alignBottom="@+id/item_name"
+            android:text="@string/expires" />
+
+        <TextView
+            android:id="@+id/item_date"
+            style="@style/CustomTextStyleDim"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/item_total_amt"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginEnd="40dp"
+            android:layout_marginRight="40dp"
+            tools:text="30/06/2020" />
+
+        <View
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_below="@+id/item_status"
+            android:layout_marginTop="38dp"
+            android:background="@color/dimmerText" />
+
+        <FrameLayout
+            android:id="@+id/item_layout"
+            android:layout_width="match_parent"
+            android:layout_height="110dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?android:attr/selectableItemBackground" />
+
+    </RelativeLayout>
+</android.support.v7.widget.CardView>

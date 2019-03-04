@@ -8,4 +8,6 @@
     <color name="black">#323232</color>
     <color name="orangeText">#ff7816</color>
     <color name="dimmerText">#6e6e6e</color>
+    <color name="disabled">#60FF3D00</color>
+    <color name="green">#28B446</color>
 </resources>

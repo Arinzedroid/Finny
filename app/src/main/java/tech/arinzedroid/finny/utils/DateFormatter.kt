@@ -20,5 +20,15 @@ class DateFormatter {
             val dateFormat = SimpleDateFormat("dd-MM-yyyy h:mm a", Locale.ROOT)
             return dateFormat.format(date)
         }
+
+        fun getHoursCount(recurrent: String?): Long {
+            return when(recurrent?.toLowerCase()){
+                "daily" -> 23
+                "weekly" -> 167
+                "monthly" -> 729
+                else -> 0
+            }
+        }
+
     }
 }

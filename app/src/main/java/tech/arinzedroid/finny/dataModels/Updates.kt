@@ -9,3 +9,8 @@ open class UpdatedRevenue{
     var revenue: RevenueModel? = null
     var position: Int = 0
 }
+
+open class UpdatedExpense{
+    var expense: ExpenseModel? = null
+    var position: Int = 0
+}

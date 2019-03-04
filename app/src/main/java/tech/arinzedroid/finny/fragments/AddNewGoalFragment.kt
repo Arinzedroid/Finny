@@ -43,7 +43,7 @@ class AddNewGoalFragment : DialogFragment() {
 
     // TODO: Rename method, update argument and hook method into UI event
     fun onButtonPressed(goalName: String) {
-        listener?.onOkClicked(goalName)
+        listener?.onCreateGoal(goalName)
     }
 
     override fun onAttach(context: Context) {
@@ -51,7 +51,7 @@ class AddNewGoalFragment : DialogFragment() {
         if (context is OnGoalAddedListener) {
             listener = context
         } else {
-            throw RuntimeException(context.toString() + " must implement OnGoalAddedListener")
+            throw RuntimeException("$context must implement OnGoalAddedListener")
         }
     }
 
@@ -61,7 +61,7 @@ class AddNewGoalFragment : DialogFragment() {
     }
 
     interface OnGoalAddedListener {
-        fun onOkClicked(goalName: String)
+        fun onCreateGoal(goalName: String)
     }
 
     companion object {
